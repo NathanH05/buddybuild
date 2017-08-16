@@ -46,14 +46,14 @@ if [[ "$WORKER_COUNT" -ne "$VIRTPROCESSORS" ]]; then
 		echo "Sample discrepant process Memory usage: "
 		eval $MEM
 
-		echo "Sample discrepanct process CPUs allowed"
+		echo "Sample discrepant process CPUs allowed"
 		CPU_ALLW="cat /proc/"${PID}"/status | grep -w Cpus_allowed: | cut -d':' -f2 | sed -n '2p'"
 		eval $CPU_ALLW
-
 		
 		CPU_ALLWD="cat /proc/"${PID}"/status | grep Cpus_allowed_list: | sed -n 2p"
-		eval $CPU_ALLWD
-		# eval $process_user6
+		eval $CPU_ALLWD	
+		CPU_ALLWD2="cat /proc/"${PID}"/maps"
+		eval $CPU_ALLWD2
 
 		echo "Sample discrepant process UID for process:"
 		USERD="cat /proc/"${PID}"/status | grep Uid  | sed -n '2p'"
